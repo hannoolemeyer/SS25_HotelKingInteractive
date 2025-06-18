@@ -17,11 +17,11 @@ private:
     bool prison;
     int prisonCount;
     int playerID;
+    bool realPlayer;
     std::vector<std::string> karten;
 
 public:
-    // Konstruktor
-    Player(const std::string& name, int startMoney, int playerID);
+    Player(const std::string& name, int startMoney, int playerID, bool realPlayer = true);
 
     // Getter
     std::string getName() const;
@@ -30,20 +30,18 @@ public:
     bool inPrison() const;
     int getPrisonCount() const;
     int getID() const;
+    bool isRealPlayer() const;
     std::vector<std::string> getKarten() const;
 
-    // Setter / Aktionen
+    void addKarte(const std::string& karte);
+    void removeKarte(const std::string& karte);
     void addMoney(int amount);
     void setPosition(int field);
     void move(int steps);
-    void pay(Player* recipient, int amount);//für mich nicht klar, ob in dem Ojekt Player einzuornen ist
     void setPrison();
     void deductPrisonTime();
-    void addKarte(const std::string& karte);
-    void removeKarte(const std::string& karte);
 
-    // Debug
-    void debug() const;
+
 };
 
 #endif // PLAYER_H
